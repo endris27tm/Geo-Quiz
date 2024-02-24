@@ -25,7 +25,10 @@ class MainActivity : AppCompatActivity() {
         Question(R.string.question_life, false),
         Question(R.string.question_tree, true),
         Question(R.string.question_amazon, true),
-        Question(R.string.test_question, true)
+        Question(R.string.test_question, true),
+        Question(R.string.test2_question, false),
+        Question(R.string.test3_question, false)
+
     )
 
 
