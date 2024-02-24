@@ -13,6 +13,8 @@
     <string name="question_tree">If a tree falls but no one is their to hear it does it make a sound?</string>
     <string name="question_amazon">Does amazon have same day shipping?</string>
 
+    <string name="test_question">Is this a test question?</string>
+
 
     <string name="yes_button">Yes</string>
     <string name="no_button">No</string>
