@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:background="@color/appBackgroundColor"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+
+        android:id="@+id/question_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="monospace"
+        android:gravity="center"
+        android:padding="24dp"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        tools:text="@string/question_australia" />
+
+    <LinearLayout
+        android:background="@color/appBackgroundColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+
+            android:background="@drawable/button_rounded"
+            android:layout_margin="8dp"
+            android:id="@+id/yes_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yes_button"
+            android:textColor="@color/textColorPrimary"
+            app:icon="@drawable/baseline_accessible_forward_24"
+            app:rippleColor="#76FF03" />
+
+        <Button
+
+            android:layout_margin="8dp"
+            android:id="@+id/no_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_rounded"
+            android:text="@string/no_button"
+            android:textColor="@color/textColorPrimary"
+            app:icon="@drawable/baseline_accessible_24"
+            app:rippleColor="#FF1744"
+            app:strokeColor="#FF5722" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/appBackgroundColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+    <Button
+        android:id="@+id/prv_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/button_rounded"
+        android:text="@string/prv_button"
+        android:textColor="@color/textColorPrimary"
+        app:icon="@drawable/baseline_agriculture_24"
+        app:rippleColor="#3D5AFE"
+        app:strokeColor="#2979FF" />
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@drawable/button_rounded"
+        android:text="@string/next_button"
+        android:textColor="@color/textColorPrimary"
+        app:icon="@drawable/baseline_baby_changing_station_24"
+        app:rippleColor="#3D5AFE"
+        app:strokeColor="#2979FF" />
+    </LinearLayout>
+
+
+</LinearLayout>

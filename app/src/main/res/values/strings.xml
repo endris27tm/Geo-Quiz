@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="app_name">GeoQuiz</string>
+
+    // Questions
+
+    <string name="question_australia">Is Canberra is the capital of Australia?</string>
+    <string name="question_oceans">Do oceans have water in them?</string>
+    <string name="question_mideast">Is the mideast in the middle of the east?</string>
+    <string name="question_africa">Do Australians live in Africa?</string>
+    <string name="question_americas">Does the second amendment justify the overwhelming mass shooting in America?</string>
+    <string name="question_asia" tools:ignore="Typos">How much wood could a wood chuck chuck if a wood chuck lived in asia?</string>
+    <string name="question_life">What is the meaning of life?</string>
+    <string name="question_tree">If a tree falls but no one is their to hear it does it make a sound?</string>
+    <string name="question_amazon">Does amazon have same day shipping?</string>
+
+
+    <string name="yes_button">Yes</string>
+    <string name="no_button">No</string>
+    <string name="next_button">Next</string>
+    <string name="prv_button">Previous</string>
+    <string name="correct_toast">Nice Job!</string>
+    <string name="incorrect_toast">Wrong smh</string>
+</resources>
