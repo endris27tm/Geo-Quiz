@@ -24,4 +24,5 @@
     <string name="prv_button">Previous</string>
     <string name="correct_toast">Nice Job!</string>
     <string name="incorrect_toast">Wrong smh</string>
+    <string name="background_image_desc">Geo Quiz Back Ground Image</string>
 </resources>
