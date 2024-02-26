@@ -33,7 +33,7 @@
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/question_heading_text_view"
+                android:id="@+id/heading_text_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="monospace"

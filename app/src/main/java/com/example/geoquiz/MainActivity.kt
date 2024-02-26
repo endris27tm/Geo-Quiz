@@ -13,22 +13,16 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-
-
     private val questionBank = listOf(
-        Question(R.string.question_australia, true),
-        Question(R.string.question_oceans, true),
-        Question(R.string.question_mideast, true),
-        Question(R.string.question_africa, false),
-        Question(R.string.question_americas, false),
-        Question(R.string.question_asia, false),
-        Question(R.string.question_life, false),
-        Question(R.string.question_tree, true),
-        Question(R.string.question_amazon, true),
-        Question(R.string.test_question, true),
-        Question(R.string.test2_question, false),
-        Question(R.string.test3_question, false)
-
+        Question(R.string.heading_australia, R.string.question_australia, true),
+        Question(R.string.heading_oceans, R.string.question_oceans, true),
+        Question(R.string.heading_mideast, R.string.question_mideast, true),
+        Question(R.string.heading_Africa, R.string.question_africa, false),
+        Question(R.string.heading_americas, R.string.question_americas, false),
+        Question(R.string.heading_asia, R.string.question_asia, false),
+        Question(R.string.heading_life, R.string.question_life, false),
+        Question(R.string.heading_tree, R.string.question_tree, true),
+        Question(R.string.heading_amazon, R.string.question_amazon, true),
     )
 
 
@@ -70,12 +64,20 @@ class MainActivity : AppCompatActivity() {
 
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextView.setText(questionTextResId)
+
+        val headingTextResId = questionBank[currentIndex].headingResId
+        binding.headingTextView.setText(headingTextResId)
+
         }
 
     private fun updateQuestion() {
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextView.setText(questionTextResId)
+
+        val headingTextResId = questionBank[currentIndex].headingResId
+        binding.headingTextView.setText(headingTextResId)
     }
+
     private fun showSnackbar() {
         val snackbar = Snackbar.make(binding.root, "This is a Snackbar!", Snackbar.LENGTH_LONG)
 
