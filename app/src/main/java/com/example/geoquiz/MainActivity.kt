@@ -5,8 +5,6 @@ import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.Toast
 import com.example.geoquiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -30,45 +28,46 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
-        binding.yesButton.setOnClickListener{ view : View ->
-        checkAnswer(true)
-
-        }
-        binding.noButton.setOnClickListener{ view : View ->
-        checkAnswer(false)
+        if (savedInstanceState != null) {
+            currentIndex = savedInstanceState.getInt("CurrentQuestionIndex", 0)
         }
 
-        binding.nextButton.setOnClickListener{
+        updateQuestion()
+
+        binding.yesButton.setOnClickListener { _: View ->
+            checkAnswer(true)
+        }
+        binding.noButton.setOnClickListener { _: View ->
+            checkAnswer(false)
+        }
+
+        binding.nextButton.setOnClickListener {
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
         }
 
-        binding.prvButton.setOnClickListener{
+        binding.prvButton.setOnClickListener {
             if (currentIndex == 0) {
                 val snackbar = Snackbar.make(binding.root, "You may not create a paradox", Snackbar.LENGTH_SHORT)
-
                 snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.snackbarActionText))
                 snackbar.setTextColor(ContextCompat.getColor(this, R.color.snackbarText))
                 snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.snackbarBackground))
                 snackbar.show()
-            }else{
+            } else {
                 currentIndex = (currentIndex - 1) % questionBank.size
                 updateQuestion()
             }
-
         }
+    }
 
-        val questionTextResId = questionBank[currentIndex].textResId
-        binding.questionTextView.setText(questionTextResId)
-
-        val headingTextResId = questionBank[currentIndex].headingResId
-        binding.headingTextView.setText(headingTextResId)
-
-        }
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt("CurrentQuestionIndex", currentIndex)
+    }
 
     private fun updateQuestion() {
         val questionTextResId = questionBank[currentIndex].textResId
@@ -76,16 +75,6 @@ class MainActivity : AppCompatActivity() {
 
         val headingTextResId = questionBank[currentIndex].headingResId
         binding.headingTextView.setText(headingTextResId)
-    }
-
-    private fun showSnackbar() {
-        val snackbar = Snackbar.make(binding.root, "This is a Snackbar!", Snackbar.LENGTH_LONG)
-
-        snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.snackbarActionText))
-        snackbar.setTextColor(ContextCompat.getColor(this, R.color.snackbarText))
-        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.snackbarBackground))
-
-        snackbar.show()
     }
 
     private fun checkAnswer(userAnswer: Boolean) {
@@ -96,13 +85,12 @@ class MainActivity : AppCompatActivity() {
             R.string.incorrect_toast
         }
 
-        val snackbar = Snackbar.make(binding.root, messageResId, Snackbar.LENGTH_SHORT)
-
-        snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.snackbarActionText))
-        snackbar.setTextColor(ContextCompat.getColor(this, R.color.snackbarText))
-        snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.snackbarBackground))
-        snackbar.show()
+        Snackbar.make(binding.root, messageResId, Snackbar.LENGTH_SHORT).apply {
+            setActionTextColor(ContextCompat.getColor(context, R.color.snackbarActionText))
+            setTextColor(ContextCompat.getColor(context, R.color.snackbarText))
+            setBackgroundTint(ContextCompat.getColor(context, R.color.snackbarBackground))
+            show()
+        }
     }
-
 }
 
