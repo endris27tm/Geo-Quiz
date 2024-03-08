@@ -3,6 +3,7 @@ package com.example.geoquiz
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 
 
@@ -12,7 +13,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
 
-        val startButton: Button = findViewById(R.id.start_button)
+        val startButton: ImageButton = findViewById(R.id.start_button)
 
         startButton.setOnClickListener {
 

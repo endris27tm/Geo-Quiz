@@ -11,24 +11,24 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/homescreen_image_desc"
         android:scaleType="centerCrop"
-        android:src="@drawable/home_screen"/>
+        android:src="@drawable/home_background"/>
 
-    <TextView
-        android:id="@+id/welcome_text"
-        android:layout_width="282dp"
-        android:layout_height="58dp"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="100dp"
-        android:background="@drawable/container_question"
-        android:text="Welcome to Geo Quiz"
-        android:textSize="24sp" />
 
-    <Button
+
+    <ImageButton
         android:id="@+id/start_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start"
-        android:layout_below="@id/welcome_text"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"/>
+        android:src="@drawable/start_button"
+        android:background="@null"
+        android:contentDescription="@string/start_button"
+
+
+        android:scaleType="fitCenter"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="120dp"
+        />
+
 </RelativeLayout>
