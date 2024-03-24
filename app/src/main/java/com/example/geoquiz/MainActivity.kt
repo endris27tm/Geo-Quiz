@@ -1,15 +1,42 @@
 package com.example.geoquiz
 
+import android.content.Intent
+import android.nfc.Tag
 import com.google.android.material.snackbar.Snackbar
 import androidx.core.content.ContextCompat
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import androidx.annotation.StringRes
 import com.example.geoquiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-
+    companion object {
+        private const val TAG = "MainActivity"
+    }
     private lateinit var binding: ActivityMainBinding
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "onStart() called")
+    }
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume() called")
+    }
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "onPause() called")
+    }
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "onStop() called")
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "onDestroy() called")
+    }
+
 
     private val questionBank = listOf(
         Question(R.string.heading_australia, R.string.question_australia, true),
@@ -28,6 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        Log.d(TAG, "onCreate() called")
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -49,6 +77,11 @@ class MainActivity : AppCompatActivity() {
             currentIndex = (currentIndex + 1) % questionBank.size
             updateQuestion()
         }
+        binding.cheatButton.setOnClickListener{
+            // start CheatActivity
+            val intent = Intent(this,CheatActivity::class.java)
+            startActivity(intent)
+        }
 
         binding.prvButton.setOnClickListener {
             if (currentIndex == 0) {
@@ -66,31 +99,74 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
+        Log.d(TAG, "onSaveInstanceState() called")
         outState.putInt("CurrentQuestionIndex", currentIndex)
     }
 
     private fun updateQuestion() {
+        val question = questionBank[currentIndex]
+
         val questionTextResId = questionBank[currentIndex].textResId
         binding.questionTextView.setText(questionTextResId)
 
         val headingTextResId = questionBank[currentIndex].headingResId
         binding.headingTextView.setText(headingTextResId)
+
+        binding.yesButton.isEnabled = !question.isAnswered
+        binding.noButton.isEnabled = !question.isAnswered
     }
 
+    private var score = 0
+
     private fun checkAnswer(userAnswer: Boolean) {
+        if (questionBank[currentIndex].isAnswered) {
+            // Show a snackbar message indicating the question has already been answered
+            Snackbar.make(binding.root, R.string.already_answered, Snackbar.LENGTH_SHORT).apply {
+                setActionTextColor(ContextCompat.getColor(context, R.color.snackbarActionText))
+                setTextColor(ContextCompat.getColor(context, R.color.snackbarText))
+                setBackgroundTint(ContextCompat.getColor(context, R.color.snackbarBackground))
+                show()
+            }
+            return
+        }
+
         val correctAnswer = questionBank[currentIndex].answer
+        if (userAnswer == correctAnswer) {
+            score++ // Increment score if the answer is correct
+        }
+
         val messageResId = if (userAnswer == correctAnswer) {
             R.string.correct_toast
         } else {
             R.string.incorrect_toast
         }
 
+        // Display the snackbar message for correct/incorrect answer
         Snackbar.make(binding.root, messageResId, Snackbar.LENGTH_SHORT).apply {
             setActionTextColor(ContextCompat.getColor(context, R.color.snackbarActionText))
             setTextColor(ContextCompat.getColor(context, R.color.snackbarText))
             setBackgroundTint(ContextCompat.getColor(context, R.color.snackbarBackground))
             show()
         }
+
+        questionBank[currentIndex].isAnswered = true
+        binding.yesButton.isEnabled = false
+        binding.noButton.isEnabled = false
+
+        // Check if all questions have been answered and show the score if so
+        if (questionBank.all { it.isAnswered }) {
+            showScoreScreen()
+        }
     }
+    private fun showScoreScreen() {
+        val scorePercentage = (score * 100) / questionBank.size
+        val intent = Intent(this, ScoreActivity::class.java).apply {
+            putExtra("SCORE_PERCENTAGE", scorePercentage)
+        }
+        startActivity(intent)
+        finish()
+    }
+
+
 }
 

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomeActivity">
+
+    <ImageView
+        android:id="@+id/scores_screen_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/homescreen_image_desc"
+        android:scaleType="centerCrop"
+        android:src="@drawable/main_background"/>
+
+
+
+    <ImageButton
+        android:id="@+id/try_again_button"
+        android:src="@drawable/try_again_button"
+        android:background="@null"
+        android:contentDescription="@string/try_again_button"
+
+
+        android:scaleType="fitCenter"
+        android:layout_width="150dp"
+        android:layout_height="70dp"
+
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="120dp"
+        />
+
+    <TextView
+        android:id="@+id/score_text_view"
+        android:layout_width="333dp"
+        android:layout_height="45dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:text="@string/loading_score"
+        android:textAlignment="center"
+        android:textSize="34sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

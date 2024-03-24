@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">GeoQuiz</string>
 
-    // Questions
+    <!-- Questions -->
     <string name="heading_australia">Australia</string>
     <string name="question_australia">Is Canberra is the capital of Australia?</string>
 
@@ -29,18 +29,37 @@
     <string name="heading_amazon">Amazon</string>
     <string name="question_amazon">Does amazon have same day shipping?</string>
 
-
-
-
+    <!-- Buttons -->
     <string name="yes_button">Yes</string>
     <string name="no_button">No</string>
     <string name="next_button">Next</string>
     <string name="prv_button">Previous</string>
+    <string name="start_button">Start</string>
+    <string name="try_again_button">Try Again?</string>
+
+    <!-- Toasts -->
     <string name="correct_toast">Nice Job!</string>
     <string name="incorrect_toast">Wrong smh</string>
-    <string name="background_image_desc">Geo Quiz Back Ground Image</string>
+    <string name="already_answered">You have already answered this question</string>
 
-    <string name="welcome_text">Welcome to Geo Quiz!</string>
-    <string name="start_button">Start</string>
+    <!-- Image Descriptions -->
+    <string name="background_image_desc">Geo Quiz Back Ground Image</string>
     <string name="homescreen_image_desc">Geo Quiz Home Screen Image</string>
+
+
+    <!-- Game Text -->
+    <string name="welcome_text">Welcome to Geo Quiz!</string>
+    <string name="your_score">Your score: %1$d%%</string>
+    <string name="loading_score">Your score is loading!</string>
+
+
+
+
+    <!--Cheating-->
+    <string name="warning_text">Are you sure you want to compromise your morals?</string>
+    <string name="show_answer_button">Show Answer</string>
+    <string name="cheat_button">Cheat</string>
+    <string name="judgment_toast">Cheating is wrong I have your IP</string>
+    <string name="title_activity_score">ScoreActivity</string>
+
 </resources>
