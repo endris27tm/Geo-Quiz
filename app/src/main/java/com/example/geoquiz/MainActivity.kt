@@ -1,6 +1,7 @@
 package com.example.geoquiz
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.nfc.Tag
 import com.google.android.material.snackbar.Snackbar
 import androidx.core.content.ContextCompat
@@ -8,7 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.TextView
 import androidx.annotation.StringRes
+import androidx.core.content.res.ResourcesCompat
 import com.example.geoquiz.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -67,9 +70,15 @@ class MainActivity : AppCompatActivity() {
         updateQuestion()
 
         binding.yesButton.setOnClickListener { _: View ->
+
+            Log.d("TAG", "Yes button clicked")
             checkAnswer(true)
+
         }
+
         binding.noButton.setOnClickListener { _: View ->
+
+            Log.d("TAG", "No button clicked")
             checkAnswer(false)
         }
 
@@ -120,19 +129,27 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkAnswer(userAnswer: Boolean) {
         if (questionBank[currentIndex].isAnswered) {
-            // Show a snackbar message indicating the question has already been answered
-            Snackbar.make(binding.root, R.string.already_answered, Snackbar.LENGTH_SHORT).apply {
-                setActionTextColor(ContextCompat.getColor(context, R.color.snackbarActionText))
-                setTextColor(ContextCompat.getColor(context, R.color.snackbarText))
-                setBackgroundTint(ContextCompat.getColor(context, R.color.snackbarBackground))
-                show()
-            }
+
+            Log.d("TAG", "You have already answered this question!")
+
+            val snackbar = Snackbar.make(binding.root, R.string.already_answered, Snackbar.LENGTH_SHORT)
+            val snackbarTextView = snackbar.view.findViewById<TextView>(com.google.android.material.R.id.snackbar_text)
+            val typeface = ResourcesCompat.getFont(this, R.font.endoscript)
+            snackbarTextView.typeface = Typeface.create(typeface, Typeface.BOLD)
+            snackbarTextView.textSize = 20f
+            snackbarTextView.typeface = typeface
+            snackbar.setActionTextColor(ContextCompat.getColor(this, R.color.snackbarActionText))
+            snackbar.setTextColor(ContextCompat.getColor(this, R.color.snackbarText))
+            snackbar.setBackgroundTint(ContextCompat.getColor(this, R.color.snackbarBackground))
+            snackbar.show()
+
             return
         }
 
         val correctAnswer = questionBank[currentIndex].answer
         if (userAnswer == correctAnswer) {
-            score++ // Increment score if the answer is correct
+            score++
+            Log.d("TAG", "Score++")
         }
 
         val messageResId = if (userAnswer == correctAnswer) {
@@ -141,7 +158,6 @@ class MainActivity : AppCompatActivity() {
             R.string.incorrect_toast
         }
 
-        // Display the snackbar message for correct/incorrect answer
         Snackbar.make(binding.root, messageResId, Snackbar.LENGTH_SHORT).apply {
             setActionTextColor(ContextCompat.getColor(context, R.color.snackbarActionText))
             setTextColor(ContextCompat.getColor(context, R.color.snackbarText))
@@ -150,10 +166,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         questionBank[currentIndex].isAnswered = true
-        binding.yesButton.isEnabled = false
-        binding.noButton.isEnabled = false
 
-        // Check if all questions have been answered and show the score if so
+
         if (questionBank.all { it.isAnswered }) {
             showScoreScreen()
         }

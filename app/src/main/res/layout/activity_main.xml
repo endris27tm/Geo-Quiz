@@ -122,22 +122,17 @@
                 android:src="@drawable/next_bubble" />
         </LinearLayout>
 
-
     </LinearLayout>
 
-    <Button
+    <ImageButton
         android:id="@+id/cheat_button"
-        android:layout_width="wrap_content"
-        android:layout_height="27dp"
-        android:layout_marginStart="357dp"
-        android:background="@drawable/question_container"
-        android:fontFamily="@font/endoscript"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/cheat_button"
-        android:textAlignment="center"
-        android:textColor="@color/textColorPrimary"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:backgroundTint="@null" />
+        android:layout_width="40dp"
+        android:layout_height="20dp"
+        android:layout_alignEnd="@id/background_image"
+        android:background="@null"
+        android:contentDescription="@string/cheat_button"
+        android:scaleType="fitCenter"
+        android:src="@drawable/cheat_button"
+        tools:ignore="TouchTargetSizeCheck" />
 
 </RelativeLayout>

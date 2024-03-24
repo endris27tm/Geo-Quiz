@@ -2,9 +2,9 @@
 <resources>
 
     <!-- Snackbar Colors -->
-    <color name="snackbarBackground">#6200EE</color>
-    <color name="snackbarText">#FFFFFF</color>
-    <color name="snackbarActionText">#3700B3</color>
+    <color name="snackbarBackground">#FFFFFF</color>
+    <color name="snackbarText">#000000</color>
+    <color name="snackbarActionText">#000000</color>
 
     <!-- App Colors -->
     <color name="appBackgroundColor">#03DAC5</color>
