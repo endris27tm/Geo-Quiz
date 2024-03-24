@@ -14,60 +14,49 @@
         android:layout_height="match_parent"
         android:contentDescription="@string/background_image_desc"
         android:scaleType="centerCrop"
-        android:src="@drawable/main_background"/>
+        android:src="@drawable/main_background" />
+
 
     <LinearLayout
+        android:background="@drawable/question_bubble"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:id="@+id/question_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
+        android:layout_marginTop="70dp"
+        android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:layout_marginTop="100dp">
+        android:padding="20dp">
 
-        <LinearLayout
-            android:id="@+id/question_container"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/heading_text_view"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/container_question"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:fontFamily="@font/endoscript"
+            android:gravity="center_horizontal"
+            android:textColor="@color/questionHeadingColor"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            tools:text="Question Heading" />
 
-            <TextView
-                android:id="@+id/heading_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:gravity="center"
-                android:textColor="@color/questionHeadingColor"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:text="Question Heading" />
+        <TextView
+            android:id="@+id/question_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/endoscript"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            tools:text="@string/question_australia" />
 
-            <TextView
-                android:id="@+id/question_text_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="monospace"
-                android:gravity="center"
-                android:textColor="@color/questionTextColor"
-                android:textSize="16sp"
-                tools:text="@string/question_australia" />
-
-        </LinearLayout>
 
     </LinearLayout>
-    <Button
-        android:id="@+id/cheat_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="190dp"
-        android:layout_marginStart="150dp"
-        android:background="@drawable/question_container"
-        android:layout_alignParentBottom="true"
-        app:backgroundTint="@null"
-        android:text="@string/cheat_button"
-        android:textColor="@color/textColorPrimary"
-        />
+
 
     <LinearLayout
         android:layout_width="300dp"
@@ -81,59 +70,74 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/yes_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/button_rounded"
-                android:text="@string/yes_button"
-                android:textColor="@color/textColorPrimary"
-                app:backgroundTint="@null" />
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:contentDescription="@string/yes_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/yes_bubble" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/no_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/button_rounded"
-                android:text="@string/no_button"
-                android:textColor="@color/textColorPrimary"
-                app:backgroundTint="@null" />
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@null"
+                android:contentDescription="@string/no_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/no_bubble" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/prv_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/button_rounded"
-                android:text="@string/prv_button"
-                android:textColor="@color/textColorPrimary"
-                app:backgroundTint="@null" />
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginBottom="4dp"
+                android:background="@null"
+                android:contentDescription="@string/prv_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/prv_bubble" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/next_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:background="@drawable/button_rounded"
-                android:text="@string/next_button"
-                android:textColor="@color/textColorPrimary"
-                app:backgroundTint="@null" />
+                android:layout_width="100dp"
+                android:layout_height="50dp"
+                android:background="@null"
+                android:contentDescription="@string/next_button"
+                android:scaleType="fitCenter"
+                android:src="@drawable/next_bubble" />
         </LinearLayout>
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/cheat_button"
+        android:layout_width="wrap_content"
+        android:layout_height="27dp"
+        android:layout_marginStart="357dp"
+        android:background="@drawable/question_container"
+        android:fontFamily="@font/endoscript"
+        android:lineSpacingExtra="8sp"
+        android:text="@string/cheat_button"
+        android:textAlignment="center"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:backgroundTint="@null" />
 
 </RelativeLayout>

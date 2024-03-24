@@ -4,9 +4,9 @@
     <item>
         <shape android:shape="rectangle">
             <gradient
-                android:startColor="#FFF00000"
-                android:endColor="#33000000"
-                android:centerColor="#11000000"
+                android:startColor="#FFFFFF"
+                android:endColor="#000000"
+                android:centerColor="#FFFFFF"
                 android:gradientRadius="75dp"
                 android:type="radial"/>
             <corners android:radius="75dp"/>
@@ -14,12 +14,12 @@
     </item>
 
     <!-- Original Rectangle Layer -->
-    <item android:left="4dp" android:right="4dp" android:top="4dp" android:bottom="8dp">
+    <item>
         <shape android:shape="rectangle">
             android:shape="rectangle">
             <gradient
-                android:startColor="@color/errorCosmicRed"
-                android:endColor="@color/black"
+                android:startColor="#FFFFFF"
+                android:endColor="#FFFFFF"
                 android:angle="13"/>
             <corners android:radius="75dp"/>
         </shape>
