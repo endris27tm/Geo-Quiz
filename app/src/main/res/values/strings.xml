@@ -61,5 +61,9 @@
     <string name="cheat_button">Cheat</string>
     <string name="judgment_toast">Cheating is wrong I have your IP</string>
     <string name="title_activity_score">ScoreActivity</string>
+    <string name="answerIs_text">The answer is:</string>
+    <string name="cheaters_never_prosper">Cheaters never prosper</string>
+    <string name="final_score">Final Score: %1$d%%</string>
+    <string name="cheat_penalty">%1$d%%</string>
 
 </resources>
